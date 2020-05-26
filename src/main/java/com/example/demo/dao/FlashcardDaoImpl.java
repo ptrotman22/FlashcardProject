@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import java.util.List;
+import java.util.Random;
 
 @Repository
 public class FlashcardDaoImpl implements FlashcardDAO {
@@ -33,6 +34,17 @@ public class FlashcardDaoImpl implements FlashcardDAO {
     public Flashcard findById(int theId) {
         Session currentSession = entityManager.unwrap(Session.class);
         Flashcard theFlashcard = currentSession.get(Flashcard.class, theId);
+        return theFlashcard;
+    }
+
+    @Override
+    @Transactional
+    public Flashcard randomFlashcard() {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<Flashcard> myQuery = currentSession.createQuery("from Flashcard");
+        List<Flashcard> flashcards = myQuery.getResultList();
+        Random random = new Random(flashcards.size()+1);
+        Flashcard theFlashcard = currentSession.get(Flashcard.class, random);
         return theFlashcard;
     }
 

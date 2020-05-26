@@ -8,7 +8,8 @@ public interface FlashcardDAO {
     //DAO Methods
     List<Flashcard> findAll();
     Flashcard findById(int theId);
-    Flashcard findInfoByEmail(String email);
+    Flashcard randomFlashcard();
+    Flashcard findFlashcardByID();
     void save(Flashcard theFlashcard);
     void deleteById(int theId);
 }

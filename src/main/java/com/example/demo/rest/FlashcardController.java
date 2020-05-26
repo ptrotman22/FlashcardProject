@@ -29,10 +29,23 @@ public class FlashcardController {
     @GetMapping("/flashcard/{FlashcardID}")
     public Flashcard findFlashcardByID(@PathVariable("FlashcardID") int flashcardID) {
 
-        Flashcard flashcard = flashcardID.findFlashcardByID(flashcardID);
+        Flashcard flashcard = flashcardDaoImpl.findById(flashcardID);
 
         if(flashcard == null) {
             throw new RuntimeException("FlashcardID is not found : " + flashcardID);
+        }
+
+        return flashcard;
+    }
+
+    //Random
+    @GetMapping("/flashcard/random")
+    public Flashcard findFlashcardByID() {
+
+        Flashcard flashcard = flashcardDaoImpl.randomFlashcard();
+
+        while(flashcard == null) {
+            flashcard = flashcardDaoImpl.randomFlashcard();
         }
 
         return flashcard;
