@@ -26,7 +26,6 @@ class Flashcard extends Component{
             {/* onClick={() => setflip(!flip)} */}
             {FlashcardDataService.findFlashcardByID}
         </div>
-
       </div>
     )
   }
