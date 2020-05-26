@@ -9,7 +9,7 @@ public interface FlashcardDAO {
     List<Flashcard> findAll();
     Flashcard findById(int theId);
     Flashcard randomFlashcard();
-    Flashcard findFlashcardByID();
+    Flashcard findFlashcardByID(int theId);
     void save(Flashcard theFlashcard);
     void deleteById(int theId);
 }

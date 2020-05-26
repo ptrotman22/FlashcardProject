@@ -40,6 +40,16 @@ public class UserLoginDaoImpl implements UserLoginDAO {
     }
 
     @Override
+    @Transactional
+    public UserLogin findUserLoginByID(int theId){
+        Session currentSession = entityManager.unwrap(Session.class);
+        Query<UserLogin> theQuery = currentSession.createQuery("FROM UserLogin WHERE id=:userLoginID");
+        theQuery.setParameter("userLoginID", theId);
+        List<UserLogin> temp = theQuery.getResultList();
+        return temp.get(0);
+    }
+
+    @Override
     @Transactional //Defines the scope of a single database transaction.
     public void save(UserLogin theUserLogin) {
         Session currentSession = entityManager.unwrap(Session.class);

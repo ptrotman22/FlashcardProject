@@ -1,5 +1,6 @@
 package com.example.demo.rest;
 
+import com.example.demo.entity.Flashcard;
 import com.example.demo.entity.UserLogin;
 import com.example.demo.dao.UserLoginDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,19 @@ public class UserLoginController {
     @GetMapping("/retrieveAllUserLogin")
     public List<UserLogin> findAll() {
         return userLoginDaoDaoImpl.findAll();
+    }
+
+    //http://localhost:8080/UserLogin/1
+    @GetMapping("/UserLogin/{UserLoginID}")
+    public UserLogin findUserLoginByID(@PathVariable("UserLoginID") int userLoginID) {
+
+        UserLogin userLogin = userLoginDaoDaoImpl.findById(userLoginID);
+
+        if(userLogin == null) {
+            throw new RuntimeException("FlashcardID is not found : " + userLoginID);
+        }
+
+        return userLogin;
     }
 
     //This is a POST request to add a new employee.

@@ -1,5 +1,6 @@
 package com.example.demo.dao;
 
+//IMPORTANT If your code is not working your imports might be incorrect
 import com.example.demo.entity.Flashcard;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
