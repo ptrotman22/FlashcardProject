@@ -20,12 +20,13 @@ public class FlashcardController {
         this.flashcardDaoImpl = flashcardDaoImpl;
     }
 
-    //http://localhost:8080/retrieveAllEmployees
+    //http://localhost:8080/retrieveAllFlashcard
     @GetMapping("/retrieveAllFlashcard")
     public List<Flashcard> findAll() {
         return flashcardDaoImpl.findAll();
     }
 
+    //http://localhost:8080/flashcard/1
     @GetMapping("/flashcard/{FlashcardID}")
     public Flashcard findFlashcardByID(@PathVariable("FlashcardID") int flashcardID) {
 
@@ -38,8 +39,8 @@ public class FlashcardController {
         return flashcard;
     }
 
-    //Random
-    @GetMapping("/flashcard/random")
+    //http://localhost:8080/flashcardRandom
+    @GetMapping("/flashcardRandom")
     public Flashcard findFlashcardByID() {
 
         Flashcard flashcard = flashcardDaoImpl.randomFlashcard();
@@ -53,7 +54,7 @@ public class FlashcardController {
 
 
 
-    //http://localhost:8080/addEmployee
+    //http://localhost:8080/addFlashcard
     @PostMapping("/addFlashcard")
     public Flashcard addFlashcard(@RequestBody Flashcard theFlashcard) {
         //also just in case they pass an id in JSON .... set id to o

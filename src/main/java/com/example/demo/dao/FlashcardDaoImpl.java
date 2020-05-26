@@ -44,8 +44,8 @@ public class FlashcardDaoImpl implements FlashcardDAO {
         Session currentSession = entityManager.unwrap(Session.class);
         Query<Flashcard> myQuery = currentSession.createQuery("from Flashcard");
         List<Flashcard> flashcards = myQuery.getResultList();
-        Random random = new Random(flashcards.size()+1);
-        Flashcard theFlashcard = currentSession.get(Flashcard.class, random);
+        Random random = new Random();
+        Flashcard theFlashcard = currentSession.get(Flashcard.class, random.nextInt(flashcards.size()+1));
         return theFlashcard;
     }
 
