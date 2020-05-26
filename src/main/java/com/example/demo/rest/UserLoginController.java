@@ -42,6 +42,7 @@ public class UserLoginController {
         return userLogin;
     }
 
+    //http://localhost:8080/password/username
     @GetMapping("/password/{username}")
     public String findPasswordByEmail(@PathVariable("username") String username) {
 

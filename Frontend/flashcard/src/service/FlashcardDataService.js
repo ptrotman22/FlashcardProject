@@ -6,29 +6,46 @@ class FlashcardDataService {
     return axios.get(`http://localhost:8080/retrieveAllFlashcard`)
   }
 
+  retrieveAllUserLogin() {
+    return axios.get(`http://localhost:8080/retrieveAllUserLogin`)
+  }
+
+  randomFlashcard() {
+    return axios.get(`http://localhost:8080/flashcardRandom`)
+  }
+
   retrievePasswordByEmail(email) {
     return axios.get(`http://localhost:8080/password/${email}`)
   }
 
-  retrieveAdminByEmail(email) {
-    return axios.get(`http://localhost:8080/admin/${email}`)
+  findFlashcardByID(flashcardID) {
+    return axios.get(`http://localhost:8080/flashcard/${flashcardID}`)
   }
 
-  retrieveEmployeeByEmail(email) {
-    return axios.get(`http://localhost:8080/employee/${email}`)
+  addFlashcard(flashcard) {
+    return axios.post(`http://localhost:8080/addFlashcard`, flashcard)
   }
 
-  addFlashcard(employee) {
-    return axios.post(`http://localhost:8080/addEmployee`, employee)
+  addUserLogin(user) {
+    return axios.post(`http://localhost:8080/addUserLogin`, user)
   }
 
-  updateFlashcard(employee) {
-    return axios.put(`http://localhost:8080/updateEmployee`, employee)
+  updateFlashcard(flashcard) {
+    return axios.put(`http://localhost:8080/updateFlashcard`, flashcard)
   }
 
-  deleteFlashcard(id) {
-    return axios.delete(`http://localhost:8080/deleteEmployee/${id}`)
+  updateUserLogin(user) {
+    return axios.put(`http://localhost:8080/updateUserLogin`, user)
   }
+
+  deleteFlashcard(flashcardID) {
+    return axios.delete(`http://localhost:8080/deleteFlashcard/${flashcardID}`)
+  }
+
+  deleteUserLogin(Userid) {
+    return axios.delete(`http://localhost:8080/deleteUserLogin/${Userid}`)
+  }
+
 }
 
-export default new EmployeeDataService()
+export default new FlashcardDataService()

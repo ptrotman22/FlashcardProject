@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
-import EmployeeDataService from "../../service/EmployeeDataService"
 import "./Login.css";
+import FlashcardDataService from "../../service/FlashcardDataService";
 
 class Login extends Component{
   constructor(props) {
@@ -28,14 +28,15 @@ class Login extends Component{
 
   handleSubmit(event) {
     event.preventDefault()
-    EmployeeDataService.retrievePasswordByEmail(this.state.email).then(
+    FlashcardDataService.retrievePasswordByEmail(this.state.email).then(
       response =>{this.setState({passwordCheck: response.data, statusCheck: response.status})},
       reason =>{this.setState({error:"The email and/or password you have entered is not correct, please try again."})}
     ).then(()=>
       {
         if(this.state.password !== this.state.passwordCheck) this.setState({error:"The email and/or password you have entered is not correct, please try again."})
         else {
-          EmployeeDataService.retrieveAdminByEmail(this.state.email).then(response =>{response.data === true ? this.props.history.push("/adminConsole/", {email: this.state.email}) : this.props.history.push("/employee/", {email: this.state.email})})
+          this.props.history.push("/flashcard")
+          //FlashcardDataService.retrieveAdminByEmail(this.state.email).then(response =>{response.data === true ? this.props.history.push("/flashcard", {email: this.state.email}) : this.props.history.push("/employee/", {email: this.state.email})})
         }
       }
     );

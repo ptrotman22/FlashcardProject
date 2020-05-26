@@ -41,7 +41,7 @@ public class FlashcardController {
 
     //http://localhost:8080/flashcardRandom
     @GetMapping("/flashcardRandom")
-    public Flashcard findFlashcardByID() {
+    public Flashcard randomFlashcard() {
 
         Flashcard flashcard = flashcardDaoImpl.randomFlashcard();
 
