@@ -14,8 +14,8 @@ class FlashcardDataService {
     return axios.get(`http://localhost:8080/flashcardRandom`)
   }
 
-  retrievePasswordByEmail(email) {
-    return axios.get(`http://localhost:8080/password/${email}`)
+  retrievePasswordByEmail(username) {
+    return axios.get(`http://localhost:8080/password/${username}`)
   }
 
   findFlashcardByID(flashcardID) {

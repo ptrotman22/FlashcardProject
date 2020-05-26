@@ -6,7 +6,7 @@ class Registration extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      email: '',
+      username: '',
       password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,14 +22,14 @@ class Registration extends Component {
   handleSubmit() {
     let user = {
       id: -1,
-      email: this.state.email,
+      username: this.state.username,
       password: this.state.password,
     }
     FlashcardDataService.addUserLogin(user).then(this.props.history.push(`/`))
   }
 
   validateForm() {
-    if(this.state.email.length === 0) this.setState({isValid: true})
+    if(this.state.username.length === 0) this.setState({isValid: true})
     else if(this.state.password.length === 0) this.setState({isValid: true})
     else this.setState({isValid: false})
   
