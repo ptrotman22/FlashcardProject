@@ -1,6 +1,5 @@
 package com.example.demo.rest;
 
-import com.example.demo.entity.Flashcard;
 import com.example.demo.entity.UserLogin;
 import com.example.demo.dao.UserLoginDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +40,18 @@ public class UserLoginController {
         }
 
         return userLogin;
+    }
+
+    @GetMapping("/password/{username}")
+    public String findPasswordByEmail(@PathVariable("username") String username) {
+
+        UserLogin userLogin = userLoginDaoDaoImpl.findInfoByUserName(username);
+
+        if(userLogin == null) {
+            throw new RuntimeException("Email is not found : " + username);
+        }
+
+        return userLogin.getPassword();
     }
 
     //This is a POST request to add a new employee.

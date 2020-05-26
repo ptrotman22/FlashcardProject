@@ -9,6 +9,7 @@ public interface UserLoginDAO {
     List<UserLogin> findAll();
     UserLogin findById(int theId);
     UserLogin findUserLoginByID(int theId);
+    UserLogin findInfoByUserName(String username);
     void save(UserLogin theUserLogin);
     void deleteById(int theId);
 }
