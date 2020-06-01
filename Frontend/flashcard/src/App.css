@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/*Style for nav specifies text properties, padding, margins, and borders*/
+nav {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Style specifies padding and margins for unordered list */
+nav ul{
+  padding: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Style for nav li specifies the background color, rounded corners, removes bullet style, and applies margins and padding for list items within the navigation */
+nav li{
+  background-color: black;
+  border-radius: 2em;
+  list-style-type: none;
+  margin: 0.3em;
+  padding: 0.4em;
+}
+
+/* Style changes navigation link text color to white and removes the underline */
+nav li a{
+  color: aqua;
+  text-decoration: none;
+}
