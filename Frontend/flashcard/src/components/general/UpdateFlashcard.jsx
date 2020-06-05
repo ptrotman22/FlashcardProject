@@ -1,36 +1,38 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
+import { Formik, Form, Field } from 'formik'
 import FlashcardDataService from '../../service/FlashcardDataService'
 
 class Updateflashcard extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      flashcard: [],
+      // flashcard: [],
       id: this.props.match.params.id, 
       question: '',
       answer: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
-    this.validateForm = this.validateForm.bind(this)
-    this.refreshFlashcard = this.refreshFlashcard.bind(this)
+
+    // this.validateForm = this.validateForm.bind(this)
+    // this.refreshFlashcard = this.refreshFlashcard.bind(this)
   }
 
-  componentDidMount(){
-    this.refreshFlashcard()
+  // componentDidMount(){
+  //   this.refreshFlashcard()
     
-  }
+  // }
 
-  refreshFlashcard(){
-    FlashcardDataService.findFlashcardByID(this.state.idSend)
-    .then(
-      response => {
-        this.setState({
-          flashcard: response.data
-        })
-      }
-    )
-  }
+  // refreshFlashcard(){
+  //   FlashcardDataService.findFlashcardByID(this.state.idSend)
+  //   .then(
+  //     response => {
+  //       this.setState({
+  //         flashcard: response.data
+  //       })
+  //     }
+  //   )
+  // }
 
   onSubmit(values) {
     let flashcard = {
@@ -38,7 +40,7 @@ class Updateflashcard extends Component {
       question: values.question,
       answer: values.answer
     }
-    FlashcardDataService.updateFlashcard(flashcard).then(this.props.history.push(`/flashcard`))
+    FlashcardDataService.updateFlashcard(flashcard).then(() => this.props.history.push('/flashcard'))
   }
 
     render() {
@@ -55,12 +57,12 @@ class Updateflashcard extends Component {
                     </button>
                     <button className="btn btn-warning" onClick={() =>this.props.history.push("/")}>Logout</button>
                 </nav>
-                <div>
+                {/* <div>
                     <br></br>
                     <h3>Flashcard Number: {this.state.flashcard.id}</h3>
                     <h3>Question: {this.state.flashcard.question}</h3>
                     <h4>Answer: {this.state.flashcard.answer}</h4>
-                </div>
+                </div> */}
 
                 <div className="jumbotron" style={{backgroundColor: "gray"}}>
                 <h3 style={{textAlign: "center"}}>Update Flashcard</h3>
@@ -76,7 +78,7 @@ class Updateflashcard extends Component {
                                 <Form>
                                     <fieldset className="form-group">
                                         <label>Id</label>
-                                        <Field className="form-contorl" type="text" name="id" disabled />
+                                        <Field className="form-control" type="text" name="id" disabled />
                                     </fieldset>
                                     <fieldset>
                                         <label>Question</label>
@@ -90,9 +92,8 @@ class Updateflashcard extends Component {
                                 </Form>
                             )
                         } 
-                      </Formik>
-                    </div>
-                  </div>
+                    </Formik>
+                </div>
             </div>
         )
     }

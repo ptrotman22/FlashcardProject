@@ -4,6 +4,7 @@ import { Button, FormGroup, FormControl, FormLabel } from "react-bootstrap";
 //import "./Login.css";
 import './Flashcard.css';
 import FlashcardDataService from "../../service/FlashcardDataService";
+//import "./App.css";
 
 class Flashcard extends Component{
   constructor(props) {

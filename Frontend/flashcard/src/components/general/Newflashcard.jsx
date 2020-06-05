@@ -42,7 +42,7 @@ class Newflashcard extends Component {
       question: this.state.question,
       answer: this.state.answer,
     }
-    FlashcardDataService.addFlashcard(flashcard).then(this.props.history.push(`/`))
+    FlashcardDataService.addFlashcard(flashcard).then(this.props.history.push(`/flashcard`))
   }
 
   validateForm() {

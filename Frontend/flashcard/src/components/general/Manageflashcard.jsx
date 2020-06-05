@@ -13,7 +13,7 @@ class Manageflashcard extends Component {
     this.refreshFlashcardRegistry = this.refreshFlashcardRegistry.bind(this)
     this.deleteFlashcardClicked = this.deleteFlashcardClicked.bind(this)
     this.addFlashcardClicked = this.addFlashcardClicked.bind(this)
-    this.upDateflashcardClicked = this.upDateflashcardClicked.bind(this)
+    this.updateFlashcardClicked = this.updateFlashcardClicked.bind(this)
     this.checkUser= this.checkUser.bind(this)
   }
 
@@ -33,9 +33,9 @@ class Manageflashcard extends Component {
     })
   }
 
-  upDateflashcardClicked(id, question, answer) {
+  updateFlashcardClicked(id) {
     console.log('Update Flashcard Clicked')
-    this.props.history.push(`/flashcard/${id}/${question}/${answer}`)
+    this.props.history.push(`/updateflashcard/${id}`)
 }
 
   addFlashcardClicked() {
@@ -75,7 +75,7 @@ class Manageflashcard extends Component {
                   <td>{flashcard.question}</td>
                   <td>{flashcard.answer}</td>
                   <td><button className="btn btn-warning" onClick={() => this.deleteFlashcardClicked(flashcard.id)}>Delete</button></td>
-                  <td><button className="btn btn-success" onClick={() => this.upDateEmployeeClicked(flashcard.id, flashcard.question, flashcard.answer)}>Update</button></td>
+                  <td><button className="btn btn-success" onClick={() => this.updateFlashcardClicked(flashcard.id)}>Update</button></td>
                 </tr>
               )
             }
